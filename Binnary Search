@@ -1,10 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-// Fungsi binary search yang mengembalikan semua indeks kemunculan karakter
+// Fungsi binary search 
 vector<int> binarySearch(char karakter, const vector<char>& data) {
     vector<int> lokasi;
 
@@ -48,19 +45,19 @@ int main() {
     // Mengurutkan array
     sort(dataAcak.begin(), dataAcak.end());
 
-    // Menampilkan array acak (hanya menampilkan beberapa data untuk memudahkan pembacaan)
+    // Menampilkan array acak 
     cout << "Beberapa data dari array acak: ";
     for (int i = 0; i < 10; ++i) {
         cout << dataAcak[i] << " ";
     }
     cout << "..." << endl;
 
-    // Meminta pengguna memasukkan karakter yang ingin dicari
+    // Meminta pengguna memasukkan karakter 
     char karakterYangDicari;
     cout << "Masukkan karakter yang ingin dicari: ";
     cin >> karakterYangDicari;
 
-    // Mencari dan menampilkan karakter menggunakan binary search
+    // Mencari dan menampilkan karakter 
     vector<int> lokasi = binarySearch(karakterYangDicari, dataAcak);
 
     // Menampilkan hasil
