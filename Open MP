@@ -2,7 +2,7 @@
 using namespace std;
 
 // Fungsi untuk mencari karakter dalam array 
-void cariDanTampilkanKarakter(char karakter, const char data[], int ukuran) {
+void CariKarakter(char karakter, const char data[], int ukuran) {
     cout << "Data yang sesuai dengan pencarian (" << karakter << "): ";
     vector<int> lokasi;
     int jumlahSesuai = 0;
@@ -18,7 +18,6 @@ void cariDanTampilkanKarakter(char karakter, const char data[], int ukuran) {
             }
         }
     }
-
     if (jumlahSesuai == 0) {
         cout << "Tidak ada data yang sesuai dengan pencarian.";
     }
@@ -26,7 +25,7 @@ void cariDanTampilkanKarakter(char karakter, const char data[], int ukuran) {
     cout << endl;
     cout << "Jumlah data yang sesuai: " << jumlahSesuai << endl;
 
-    // Menampilkan lokasi data yang sesuai
+    // Menampilkan lokasi data
     if (jumlahSesuai > 0) {
         cout << "Lokasi data yang sesuai: ";
         for (int i : lokasi) {
@@ -37,32 +36,25 @@ void cariDanTampilkanKarakter(char karakter, const char data[], int ukuran) {
 }
 
 int main() {
-    // Seed untuk nilai acak
+    // Array untuk nilai acak
     srand(time(0));
-
-    // Jumlah data dalam array
     const int ukuranArray = 1000;
-
-    // Membuat array acak
     char dataAcak[ukuranArray];
     for (int i = 0; i < ukuranArray; ++i) {
         dataAcak[i] = 'A' + rand() % 26; // Mengisi array dengan karakter acak A-Z
     }
 
-    // Menampilkan beberapa data dari array acak 
     cout << "Beberapa data dari array acak: ";
     for (int i = 0; i < 10; ++i) {
         cout << dataAcak[i] << " ";
     }
     cout << "..." << endl;
-
-    // Mencari karakter dalam array
     char karakterYangDicari;
     cout << "Masukkan karakter yang ingin dicari: ";
     cin >> karakterYangDicari;
 
-    // Memanggil fungsi untuk mencari dan menampilkan karakter
-    cariDanTampilkanKarakter(karakterYangDicari, dataAcak, ukuranArray);
+    // Memanggil fungsi 
+    CariKarakter(karakterYangDicari, dataAcak, ukuranArray);
 
     return 0;
 }
