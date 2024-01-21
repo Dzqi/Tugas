@@ -54,7 +54,7 @@ int main() {
 
     // Mencari karakter dalam array
     char karakterYangDicari;
-    cout << "Masukkan karakter yang ingin dicari: ";
+    cout << "Masukkan karakter pencarian: ";
     cin >> karakterYangDicari;
 
     // Memanggil fungsi 
