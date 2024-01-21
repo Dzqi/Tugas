@@ -1,0 +1,84 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+// Fungsi binary search yang mengembalikan semua indeks kemunculan karakter
+vector<int> binarySearch(char karakter, const vector<char>& data) {
+    vector<int> lokasi;
+
+    int low = 0;
+    int high = data.size() - 1;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (data[mid] == karakter) {
+            lokasi.push_back(mid);
+            // Mencari kemunculan karakter ke kiri dan kanan dari indeks tengah
+            int left = mid - 1;
+            int right = mid + 1;
+            while (left >= 0 && data[left] == karakter) {
+                lokasi.push_back(left);
+                left--;
+            }
+            while (right < data.size() && data[right] == karakter) {
+                lokasi.push_back(right);
+                right++;
+            }
+            return lokasi;
+        } else if (data[mid] < karakter) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    return lokasi; // Karakter tidak ditemukan
+}
+
+int main() {
+    // Inisialisasi array
+    vector<char> dataAcak(1000);
+    for (int i = 0; i < 1000; ++i) {
+        dataAcak[i] = 'A' + rand() % 26; // Mengisi array dengan karakter acak A-Z
+    }
+
+    // Mengurutkan array
+    sort(dataAcak.begin(), dataAcak.end());
+
+    // Menampilkan array acak (hanya menampilkan beberapa data untuk memudahkan pembacaan)
+    cout << "Beberapa data dari array acak: ";
+    for (int i = 0; i < 10; ++i) {
+        cout << dataAcak[i] << " ";
+    }
+    cout << "..." << endl;
+
+    // Meminta pengguna memasukkan karakter yang ingin dicari
+    char karakterYangDicari;
+    cout << "Masukkan karakter yang ingin dicari: ";
+    cin >> karakterYangDicari;
+
+    // Mencari dan menampilkan karakter menggunakan binary search
+    vector<int> lokasi = binarySearch(karakterYangDicari, dataAcak);
+
+    // Menampilkan hasil
+    cout << "Data yang sesuai dengan pencarian (" << karakterYangDicari << "): ";
+    if (!lokasi.empty()) {
+        for (int i : lokasi) {
+            cout << dataAcak[i] << "(" << i << ") ";
+        }
+        cout << endl;
+        cout << "Jumlah data yang sesuai: " << lokasi.size() << endl;
+        cout << "Lokasi data yang sesuai: ";
+        for (int i : lokasi) {
+            cout << i << " ";
+        }
+        cout << endl;
+    } else {
+        cout << "Tidak ada data yang sesuai dengan pencarian." << endl;
+    }
+
+    return 0;
+}
