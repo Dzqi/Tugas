@@ -2,7 +2,7 @@
 using namespace std;
 
 // Fungsi untuk mencari karakter 
-void cariDanTampilkanKarakter(char karakter, const char data[], int ukuran) {
+void CariDanTampilkanKarakter(char karakter, const char data[], int ukuran) {
     cout << "Data yang sesuai dengan pencarian (" << karakter << "): ";
     vector<int> lokasi;
     int jumlahSesuai = 0;
@@ -54,7 +54,7 @@ int main() {
     cin >> karakterYangDicari;
 
     // Memanggil fungsi 
-    cariDanTampilkanKarakter(karakterYangDicari, dataAcak, ukuranArray);
+    CariDanTampilkanKarakter(karakterYangDicari, dataAcak, ukuranArray);
 
     return 0;
 }
