@@ -2,32 +2,22 @@ import threading
 import random
 
 array_size = 1000
-num_threads = 4
-
-# Fungsi untuk mencari huruf dalam bagian tertentu dari array
+num_threads = 10
+# Fungsi untuk mencari huruf 
 def cari_huruf(huruf, array, start, end, results):
     local_results = []
-
     for i in range(start, end):
         if array[i] == huruf:
             local_results.append({'posisi': i, 'huruf': array[i]})
-
     results.extend(local_results)
-
 def main():
     huruf = [chr(random.randint(65, 90)) for _ in range(array_size)]
 
-    # Menampilkan isi array
+    # Pencarian data array
     print("Isi Array:", end=" ")
     print(*huruf)
-
-    # Meminta pengguna untuk memasukkan huruf yang dicari
     huruf_dicari = input("Masukkan huruf yang dicari: ")
-
-    # Menghitung ukuran bagian untuk setiap thread
     chunk_size = array_size // num_threads
-
-    # Mendefinisikan list untuk menyimpan hasil pencarian setiap thread
     thread_results = []
 
     # Membuat thread
@@ -38,11 +28,8 @@ def main():
         thread = threading.Thread(target=cari_huruf, args=(huruf_dicari, huruf, start, end, thread_results))
         threads.append(thread)
         thread.start()
-
-    # Bergabung dengan thread
     for thread in threads:
         thread.join()
-
     # Menampilkan hasil
     if thread_results:
         print(f"Huruf {huruf_dicari} ditemukan pada lokasi dan huruf berikut:")
@@ -50,6 +37,5 @@ def main():
             print(f"Posisi: {result['posisi']}, Huruf: {result['huruf']}")
     else:
         print(f"Huruf {huruf_dicari} tidak ditemukan dalam array.")
-
 if __name__ == "__main__":
     main()
