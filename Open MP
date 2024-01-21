@@ -1,10 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <omp.h>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-// Fungsi untuk mencari karakter dalam array dan menampilkan semua data yang sesuai
+// Fungsi untuk mencari karakter dalam array 
 void cariDanTampilkanKarakter(char karakter, const char data[], int ukuran) {
     cout << "Data yang sesuai dengan pencarian (" << karakter << "): ";
     vector<int> lokasi;
@@ -52,7 +49,7 @@ int main() {
         dataAcak[i] = 'A' + rand() % 26; // Mengisi array dengan karakter acak A-Z
     }
 
-    // Menampilkan beberapa data dari array acak (hanya menampilkan beberapa data untuk memudahkan pembacaan)
+    // Menampilkan beberapa data dari array acak 
     cout << "Beberapa data dari array acak: ";
     for (int i = 0; i < 10; ++i) {
         cout << dataAcak[i] << " ";
