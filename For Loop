@@ -33,13 +33,9 @@ void cariDanTampilkanKarakter(char karakter, const char data[], int ukuran) {
 }
 
 int main() {
-    // Seed untuk nilai acak
+    // Array untuk nilai acak
     srand(time(0));
-
-    // Jumlah data dalam array
     const int ukuranArray = 1000;
-
-    // Membuat array acak
     char dataAcak[ukuranArray];
     for (int i = 0; i < ukuranArray; ++i) {
         dataAcak[i] = 'A' + rand() % 26; // Mengisi array dengan karakter acak A-Z
